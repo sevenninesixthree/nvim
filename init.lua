@@ -1,4 +1,5 @@
-SoftKeybord=true
+Phone=false
+SoftKeybord=false
 
 require("plugins.plugins-setup")
 
