@@ -1,5 +1,4 @@
-Phone=false
-SoftKeybord=false
+require("checkEnviroment")
 
 require("plugins.plugins-setup")
 
@@ -12,3 +11,4 @@ require("plugins.lsp")
 require("plugins.nvim-cmp")
 require("plugins.bufferline")
 require("plugins.auto-pair")
+require("plugins.gitsings")

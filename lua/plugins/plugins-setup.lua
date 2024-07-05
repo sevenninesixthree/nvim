@@ -54,5 +54,7 @@ require("lazy").setup({
       vim.g.mkdp_theme = 'dark'
     end,
     ft = { "markdown" },
-  },{'m4xshen/autoclose.nvim'}
+  },
+  {'m4xshen/autoclose.nvim'},
+  {"lewis6991/gitsigns.nvim"},
 })
