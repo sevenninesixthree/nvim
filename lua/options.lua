@@ -11,6 +11,9 @@ op.linebreak=true
 op.splitright=true
 op.splitbelow=true
 
+op.foldmethod="indent"
+op.foldlevel=99
+
 op.termguicolors=true
 op.signcolumn="yes"
 op.cursorline=true

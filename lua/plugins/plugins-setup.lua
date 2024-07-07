@@ -57,4 +57,8 @@ require("lazy").setup({
   },
   {'m4xshen/autoclose.nvim'},
   {"lewis6991/gitsigns.nvim"},
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+  {"mfussenegger/nvim-dap"},
+  { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} },
+  {"theHamsta/nvim-dap-virtual-text"},
 })

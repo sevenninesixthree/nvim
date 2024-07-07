@@ -21,9 +21,13 @@ end
 --normal mod
 km.set("n","<leader>e",":NvimTreeToggle<CR>")
 km.set("n","<leader>v","gg=G")
-km.set("n","<leader>ccc",":!g++ -o %< % <CR><CR>")
 km.set("n","<leader>r",":!./%<")
 km.set("n","<leader>p",":MarkdownPreview<CR>")
+
 km.set("n","<leader>h",":bp<CR>")
 km.set("n","<leader>l",":bn<CR>")
+km.set("n","<leader>sj",":split<CR>")
+km.set("n","<leader>sl",":vsplit<CR>")
+
 km.set("n","<leader>git",":terminal<CR>ilazygit<CR>")
+km.set("n","<leader>t",":terminal<CR>")
