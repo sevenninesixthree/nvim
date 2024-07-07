@@ -1,9 +1,9 @@
 Phone=false
 SoftKeybord=false
-SystemName="Linux"
+SystemName="Windows"
 local testFile=io.popen("cd")
 if(testFile:read()==nil)then
-  SystemName="Windows"
+  SystemName="Linux"
 end
 if SystemName=="Linux" then
   testFile=io.popen("uname -m")

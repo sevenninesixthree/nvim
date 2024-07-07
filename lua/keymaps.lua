@@ -18,7 +18,6 @@ if SoftKeybord==true then
   km.set("i","<C-d>","^")
 end
 
---normal mod
 km.set("n","<leader>e",":NvimTreeToggle<CR>")
 km.set("n","<leader>v","gg=G")
 km.set("n","<leader>r",":!./%<")
