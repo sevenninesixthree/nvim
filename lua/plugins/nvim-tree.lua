@@ -1,5 +1,5 @@
 local mywidth=30
-if Phone==true then
+if require'checkEnviroment'.phone==true then
   mywidth=50
 end
 vim.g.loaded_netrw = 1

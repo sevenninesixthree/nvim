@@ -7,7 +7,7 @@ local options={
   disable_command_mode = false,
 }
 local keys
-if SoftKeybord==true then
+if require'checkEnviroment'.softKeybord==true then
   keys={
     ["("] = { escape = false, close = true, pair = "()" },
     ["["] = { escape = false, close = true, pair = "[]" },

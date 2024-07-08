@@ -4,7 +4,7 @@ local km=vim.keymap
 
 --insert mod
 km.set("i","jk","<esc>")
-if SoftKeybord==true then
+if require("checkEnviroment").softKeybord==true then
   km.set("i","qq","\"")
   km.set("i","<C-w>","<")
   km.set("i","<C-e>","=")
