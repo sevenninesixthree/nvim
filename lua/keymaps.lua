@@ -2,8 +2,9 @@ vim.g.mapleader=" "
 
 local km=vim.keymap
 
---insert mod
 km.set("i","jk","<esc>")
+km.set("t","<C-w>","<C-\\><C-n>")
+
 if require("checkEnviroment").softKeybord==true then
   km.set("i","qq","\"")
   km.set("i","<C-w>","<")
@@ -25,6 +26,7 @@ km.set("n","<leader>p",":MarkdownPreview<CR>")
 
 km.set("n","<leader>h",":bp<CR>")
 km.set("n","<leader>l",":bn<CR>")
+km.set("n","<leader>c",":bd<CR>")
 km.set("n","<leader>sj",":split<CR>")
 km.set("n","<leader>sl",":vsplit<CR>")
 
