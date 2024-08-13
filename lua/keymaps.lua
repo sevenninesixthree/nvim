@@ -22,6 +22,7 @@ end
 km.set("n","<leader>e",":NvimTreeToggle<CR>")
 km.set("n","<leader>v","gg=G")
 km.set("n","<leader>r",":!./%<")
+km.set("n","<C-a>","ggVG")
 km.set("n","<leader>p",":MarkdownPreview<CR>")
 
 km.set("n","<leader>h",":bp<CR>")

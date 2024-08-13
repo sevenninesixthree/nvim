@@ -17,19 +17,23 @@ op.foldlevel=99
 op.termguicolors=true
 op.signcolumn="yes"
 op.cursorline=true
-require("tokyonight").setup({
-  transparent = true, -- Enable this to disable setting the background color
-  styles={
-    sidebars="transparent",
-    floats="transparent",
-  },
-  on_colors=function (colors)
-    colors.bg_statusline=colors.none
-  end
-})
-require("lualine").setup({
-  options={
-    theme='tokyonight'
-  }
-})
+
+local uname=require("checkEnviroment").systemName
+if uname=="Linux" then
+  require("tokyonight").setup({
+    transparent = true, -- Enable this to disable setting the background color
+    styles={
+      sidebars="transparent",
+      floats="transparent",
+    },
+    on_colors=function (colors)
+      colors.bg_statusline=colors.none
+    end
+  })
+  require("lualine").setup({
+    options={
+      theme='tokyonight'
+    }
+  })
+end
 vim.cmd[[colorscheme tokyonight-night]]

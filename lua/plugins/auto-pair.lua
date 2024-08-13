@@ -21,7 +21,6 @@ if require'checkEnviroment'.softKeybord==true then
     ['"'] = { escape = true, close = true, pair = '""' },
     ["'"] = { escape = true, close = true, pair = "''" },
     ["`"] = { escape = true, close = true, pair = "``" },
-    ["$"] = { escape = true, close = true, pair = "$$"},
 
     ["<C-f>"] = { escape = false, close = true, pair = "[]" },
     ["<C-k>"] = { escape = false, close = true, pair = "{}" },
@@ -41,7 +40,6 @@ else
     ['"'] = { escape = true, close = true, pair = '""' },
     ["'"] = { escape = true, close = true, pair = "''" },
     ["`"] = { escape = true, close = true, pair = "``" },
-    ["$"] = { escape = true, close = true, pair = "$$"}
   }
 end
 local config = {
