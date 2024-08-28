@@ -19,7 +19,8 @@ op.signcolumn="yes"
 op.cursorline=true
 
 local uname=require("checkEnviroment").systemName
-if uname=="Linux" then
+local ph=require("checkEnviroment").phone
+if uname=="Linux" and ph==false then
   require("tokyonight").setup({
     transparent = true, -- Enable this to disable setting the background color
     styles={
@@ -30,10 +31,10 @@ if uname=="Linux" then
       colors.bg_statusline=colors.none
     end
   })
-  require("lualine").setup({
-    options={
-      theme='tokyonight'
-    }
-  })
 end
+require("lualine").setup({
+  options={
+    theme='tokyonight'
+  }
+})
 vim.cmd[[colorscheme tokyonight-night]]
