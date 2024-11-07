@@ -30,6 +30,7 @@ km.set("n","<leader>l",":bn<CR>")
 km.set("n","<leader>c",":bd<CR>")
 km.set("n","<leader>sj",":split<CR>")
 km.set("n","<leader>sl",":vsplit<CR>")
+km.set("n","<leader>sp",":set spell!<CR>")
 
 km.set("n","<leader>git",":terminal<CR>ilazygit<CR>")
 km.set("n","<leader>t",":terminal<CR>")

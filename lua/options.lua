@@ -18,6 +18,9 @@ op.termguicolors=true
 op.signcolumn="yes"
 op.cursorline=true
 
+op.spelllang="en,cjk"
+op.spelloptions="camel"
+
 local uname=require("checkEnviroment").systemName
 local ph=require("checkEnviroment").phone
 if uname=="Linux" and ph==false then

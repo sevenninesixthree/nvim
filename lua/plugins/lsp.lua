@@ -1,6 +1,6 @@
 --的lsp表
 local lspList={
-  "lua_ls","clangd","texlab",
+  "lua_ls","clangd","texlab","matlab_ls"
 }
 require("mason").setup({
   ui={
