@@ -41,3 +41,5 @@ require("lualine").setup({
   }
 })
 vim.cmd[[colorscheme tokyonight-night]]
+vim.cmd("hi LineNrAbove guifg=#586291")
+vim.cmd("hi LineNrBelow guifg=#586291")
