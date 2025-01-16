@@ -28,9 +28,15 @@ km.set("n","<leader>p",":MarkdownPreview<CR>")
 km.set("n","<leader>h",":bp<CR>")
 km.set("n","<leader>l",":bn<CR>")
 km.set("n","<leader>c",":bd<CR>")
-km.set("n","<leader>sj",":split<CR>")
-km.set("n","<leader>sl",":vsplit<CR>")
 km.set("n","<leader>sp",":set spell!<CR>")
+km.set("n","<leader>sc",":%s/[\\u4E00-\\u9FCC]/&/g<CR>")
 
-km.set("n","<leader>git",":terminal<CR>ilazygit<CR>")
-km.set("n","<leader>t",":terminal<CR>")
+if require("checkEnviroment").systemName=="Linux" 
+  and require("checkEnviroment").phone==false
+then
+  km.set("n","<leader>t",":!kitty fish &<CR><CR>")
+  km.set("n","<leader>g",":!kitty lazygit &<CR><CR>")
+else
+  km.set("n","<leader>t",":terminal<CR>")
+  km.set("n","<leader>g",":terminal<CR>ilazygit<CR>")
+end

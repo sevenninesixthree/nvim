@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query","cpp","markdown","markdown_inline","latex"},
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query","cpp","markdown","markdown_inline","latex","bash","python"},
 
   highlight = {enable = true},
   indent={enable=true},
@@ -24,3 +24,5 @@ local colors={
 for i = 1,#colors do
   vim.cmd("hi rainbowcol"..i.." guifg="..colors[i])
 end
+
+require("colorizer").setup()
