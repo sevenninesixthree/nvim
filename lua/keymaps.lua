@@ -28,6 +28,8 @@ km.set("n","<leader>p",":MarkdownPreview<CR>")
 km.set("n","<leader>h",":bp<CR>")
 km.set("n","<leader>l",":bn<CR>")
 km.set("n","<leader>c",":bd<CR>")
+km.set("n","<leader>sj",":split<CR>")
+km.set("n","<leader>sl",":vsplit<CR>")
 km.set("n","<leader>sp",":set spell!<CR>")
 km.set("n","<leader>sc",":%s/[\\u4E00-\\u9FCC]/&/g<CR>")
 

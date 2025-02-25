@@ -20,3 +20,10 @@ for i,v in ipairs(lspList) do
     capabilities=capabilities
   }
 end
+
+local clangCmd=require('lspconfig').clangd.cmd
+local newClangdCmd={clangCmd[1],"--header-insertion=never","--completion-style=detailed"}
+require('lspconfig').clangd.setup({
+  cmd=newClangdCmd,
+  capabilities=capabilities
+})
