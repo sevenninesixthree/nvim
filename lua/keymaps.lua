@@ -19,6 +19,10 @@ if require("checkEnviroment").softKeybord==true then
   km.set("i","<C-d>","^")
 end
 
+km.set("n","sp","\"+p")
+km.set("n","syy","\"+yy")
+km.set("v","sy","\"+y")
+
 km.set("n","<leader>e",":NvimTreeToggle<CR>")
 km.set("n","<leader>v","gg=G")
 km.set("n","<leader>r",":!./%<")
