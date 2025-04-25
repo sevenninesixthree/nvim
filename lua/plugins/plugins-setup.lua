@@ -64,4 +64,5 @@ require("lazy").setup({
   {"theHamsta/nvim-dap-virtual-text"},
   {"mechatroner/rainbow_csv"},
   {"norcalli/nvim-colorizer.lua"},
+  {'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async'}
 })
