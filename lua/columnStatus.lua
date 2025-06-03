@@ -15,7 +15,7 @@ function M.build()
   local ln=vv.lnum;local rn=vv.relnum;local vn=vv.virtnum
   local nm=vn<=0 and (rn==0 and ln.." %=" or "%="..rn) or "%="
   local fo="  "
-  if fl(ln)>fl(ln-1) then
+  if fl(ln)>fl(ln-1) and vn <=0 then
     fo=(fc(ln)==-1 and " " or " ")
     -- fo='%#FoldColumn#%@Hi@'..(fc(ln)==-1 and " " or " ").."%*"
   end

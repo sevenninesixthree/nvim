@@ -1,15 +1,7 @@
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query","cpp","markdown","markdown_inline","latex","bash","python","go","glsl","cmake"},
-
-  highlight = {enable = true},
-  indent={enable=true},
-  rainbow={
-    enable=true,
-    extended_mode=true,
-    max_file_lines=nil,
-  }
-}
+vim.api.nvim_create_autocmd({'BufEnter','BufWinEnter'}, {
+  pattern = { '*.lua','*.cpp','*.c','*.h','*.tex','*.glsl','*.sh'},
+  callback = function() vim.treesitter.start() end,
+})
 
 local colors={
   "#f7768e",
@@ -26,3 +18,29 @@ for i = 1,#colors do
 end
 
 require("colorizer").setup()
+
+vim.g.rainbow_delimiters = {
+  strategy = {
+    [''] = 'rainbow-delimiters.strategy.global',
+    vim = 'rainbow-delimiters.strategy.local',
+  },
+  query = {
+    [''] = 'rainbow-delimiters',
+    lua = 'rainbow-blocks',
+    latex = 'rainbow-blocks'
+  },
+  priority = {
+    [''] = 110,
+    lua = 210,
+  },
+  highlight = {
+    'RainbowDelimiterRed',
+    'RainbowDelimiterYellow',
+    'RainbowDelimiterBlue',
+    'RainbowDelimiterOrange',
+    'RainbowDelimiterGreen',
+    'RainbowDelimiterViolet',
+    'RainbowDelimiterCyan',
+  },
+  log={level=vim.log.levels.DEBUG}
+}
