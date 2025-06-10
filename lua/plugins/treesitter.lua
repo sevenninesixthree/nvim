@@ -1,6 +1,11 @@
 vim.api.nvim_create_autocmd({'BufEnter','BufWinEnter'}, {
   pattern = { '*.lua','*.cpp','*.c','*.h','*.tex','*.glsl','*.sh'},
-  callback = function() vim.treesitter.start() end,
+  callback = function()
+    vim.treesitter.start()
+    if vim.treesitter.query.get(vim.bo.filetype,"indents")~=nil then
+      vim.bo.indentexpr="v:lua.require'nvim-treesitter'.indentexpr()"
+    end
+  end,
 })
 
 local colors={
@@ -27,7 +32,7 @@ vim.g.rainbow_delimiters = {
   query = {
     [''] = 'rainbow-delimiters',
     lua = 'rainbow-blocks',
-    latex = 'rainbow-blocks'
+    -- latex = 'rainbow-blocks'
   },
   priority = {
     [''] = 110,

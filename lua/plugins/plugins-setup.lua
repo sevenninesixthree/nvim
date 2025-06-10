@@ -49,10 +49,26 @@ require("lazy").setup({
     },
   },
   {
+	"L3MON4D3/LuaSnip",
+	version = "v2.*",
+	build = "make install_jsregexp"
+  },
+  {
     'saghen/blink.cmp',
     version = '1.*',
     opts = {
+      sources = {
+        default = { "lsp", "snippets", "path", "buffer" },  -- snippets 优先
+        providers = {
+          snippets = {
+            score_offset = 3,  -- 提高权重
+          },
+        },
+      },
       completion={
+        accept={
+          auto_brackets={enabled=false}
+        },
         documentation={
           auto_show=true
         },
@@ -75,7 +91,7 @@ require("lazy").setup({
                     })
                   end
                   for _, i in ipairs(ctx.label_matched_indices) do
-                    table.insert(h,{i,i+1,group='BlinkCmpLabelMatch'})
+                    table.insert(h,{i,i+1,group='String'})
                   end
                   return h;
                 end
@@ -88,13 +104,12 @@ require("lazy").setup({
         ['C-y']={},
         ['C-u']={},
         ['<CR>']={ 'accept', 'fallback'},
-        ['<S-Tab>']={'select_prev','fallback_to_mappings'},
-        ['<Tab>']={'select_next','fallback_to_mappings'},
+        ['<S-Tab>']={'select_prev','snippet_backward','fallback_to_mappings'},
+        ['<Tab>']={'select_next','snippet_forward','fallback_to_mappings'},
       },
+      signature={enabled=true},
+      snippets = { preset = 'luasnip' }
     },
-    signature={
-      enable=true
-    }
   },
   {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
   {
@@ -123,5 +138,5 @@ require("lazy").setup({
   {"theHamsta/nvim-dap-virtual-text"},
   {"mechatroner/rainbow_csv"},
   {"norcalli/nvim-colorizer.lua"},
-  {'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async'}
+  {'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async'},
 })

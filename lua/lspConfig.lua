@@ -33,3 +33,14 @@ api.nvim_create_autocmd('LspAttach',{
     })
   end
 })
+local d=vim.diagnostic
+d.config({
+  signs={
+    text={
+      [d.severity.ERROR]='',
+      [d.severity.WARN]='',
+      [d.severity.HINT]='',
+      [d.severity.INFO]=''
+    }
+  }
+})
