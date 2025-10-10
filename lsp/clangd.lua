@@ -1,5 +1,8 @@
 return{
-  cmd = { 'clangd','--header-insertion=never',"--completion-style=detailed"},
+  cmd = { 'clangd',
+    '--header-insertion=never',
+    "--completion-style=detailed",
+  },
   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
   root_markers = {
     '.clangd',
@@ -15,6 +18,6 @@ return{
         editsNearCursor = true,
       },
     },
-    offsetEncoding = { 'utf-8', 'utf-16' },
+    offsetEncoding = { 'utf-16' },
   },
 }

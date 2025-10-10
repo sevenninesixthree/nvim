@@ -24,10 +24,31 @@ km.set("n","syy","\"+yy")
 km.set("v","sy","\"+y")
 
 km.set("n","<leader>e",":NvimTreeToggle<CR>")
-km.set("n","<leader>v","gg=G")
+km.set("n","<leader>v",vim.lsp.buf.format);
+km.set("n","gca",vim.lsp.buf.code_action)
 km.set("n","<leader>r",":!./%<")
 km.set("n","<C-a>","ggVG")
-km.set("n","<leader>p",":MarkdownPreview<CR>")
+local lpList={
+  markdown=function ()
+    vim.cmd("MarkdownPreviewToggle")
+  end,
+  pdf=function ()
+    vim.system({'zathura',vim.api.nvim_buf_get_name(0)})
+  end,
+  typst=function ()
+    vim.cmd("silent! TypstPreviewToggle")
+  end
+}
+setmetatable(lpList,{
+  __index=function (_, k)
+    vim.notify(k,vim.log.levels.WARN)
+    return function () end
+  end
+})
+km.set("n","<leader>p",function ()
+  local ft=vim.bo.filetype
+  lpList[ft]();
+end)
 
 km.set("n","<leader>h",":bp<CR>")
 km.set("n","<leader>l",":bn<CR>")
@@ -49,4 +70,3 @@ if require("checkEnviroment").systemName=="Linux" then
 else
   km.set("n","<leader>t",":terminal<CR>")
 end
-km.set("n","<leader>g",":terminal<CR>ilazygit<CR>")

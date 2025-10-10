@@ -57,8 +57,22 @@ op.cursorline=true
 op.spelllang="en,cjk"
 op.spelloptions="camel"
 
-vim.api.nvim_create_autocmd({"WinEnter","BufEnter"},{
+local au=vim.api.nvim_create_autocmd
+au({"WinEnter","BufEnter"},{
   callback=require("columnStatus").callback
+})
+
+-- au({"BufWinEnter"},{
+--   pattern={"*.*"},
+--   command="silent! loadview"
+-- })
+au({"BufWinLeave"},{
+  pattern={"*.*"},
+  command="mkview"
+})
+au({"BufNewFile","BufRead"},{
+  pattern={"*.mcfunction"},
+  command="set filetype=mcfunction"
 })
 
 local uname=require("checkEnviroment").systemName
@@ -85,6 +99,7 @@ require("lualine").setup({
     theme='tokyonight'
   }
 })
+
 vim.cmd[[colorscheme tokyonight-night]]
 vim.cmd("hi LineNrAbove guifg=#586291")
 vim.cmd("hi LineNrBelow guifg=#586291")

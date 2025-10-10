@@ -3,6 +3,15 @@ local api=vim.api
 lsp.enable 'lua_ls'
 lsp.enable 'clangd'
 lsp.enable 'texlab'
+lsp.enable 'glsl_analyzer'
+lsp.enable 'wolfram_ls'
+-- lsp.enable 'vtsls'
+lsp.enable 'ts_ls'
+-- lsp.enable 'denols'
+lsp.enable 'spyglassmc_ls'
+lsp.enable 'sqls'
+lsp.enable 'pylsp'
+lsp.enable 'tinymist'
 
 api.nvim_create_autocmd('LspAttach',{
   group = api.nvim_create_augroup('lsp-attach',{clear=true}),

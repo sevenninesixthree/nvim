@@ -20,6 +20,7 @@ local fontList={
   {'tbf',inText,'textbf'},-- 粗体
   {'mbb',inMath,'mathbb'},-- 黑板粗体
   {'mbs',inMath,'boldsymbol'},-- 数学符号粗体
+  {'mcl',inMath,'mathcal'},-- 数学符号小花体
 }
 M={}
 for _, j in ipairs(fontList) do

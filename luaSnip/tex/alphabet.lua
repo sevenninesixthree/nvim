@@ -20,15 +20,35 @@ local alphabet={
   {"Xp","Pi"},
   {"xo","omega"},
   {"Xo","Omega"},
+  {"xd","delta"},
+  {"Xd","Delta"},
+  {"xm","mu"},
+  {"xr","rho"},
+  {"xe","epsilon"},
+  {"xve","varepsilon"},
+  {"xx","sigma"},
+  {"xX","Sigma"},
+  {"xl","lambda"},
+  {"Xl","Lambda"},
+  {"xn","nu"},
+  {"xta","tau"},
+  {"xte","eta"},
 
+  -- 一些常用的符号
   {"partial","partial"},
   {"cos","cos"},
   {"sin","sin"},
   {"tan","tan"},
-  {"cot","cot"}
+  {"cot","cot"},
+  {"nabla","nabla"},
+  {"times","times"},
+  {"cdot","cdot"},
+  {"to","to"},
+  {"in","in"},
+  {"circ","circ"}
 }
 for _, i in ipairs(alphabet) do
   table.insert(M,s({trig=i[1],show_condition=inMath},
-    {t('\\'..i[2])}))
+    {t('\\'..i[2]..' ')}))
 end
 return M

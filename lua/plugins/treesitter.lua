@@ -1,5 +1,5 @@
 vim.api.nvim_create_autocmd({'BufEnter','BufWinEnter'}, {
-  pattern = { '*.lua','*.cpp','*.c','*.h','*.tex','*.glsl','*.sh'},
+  pattern = { '*.lua','*.cpp','*.c','*.h','*.tex','*.glsl','*.sh',"*.py","*.md","*.js","*.ts","*.sql","*.typ"},
   callback = function()
     vim.treesitter.start()
     if vim.treesitter.query.get(vim.bo.filetype,"indents")~=nil then
@@ -7,20 +7,9 @@ vim.api.nvim_create_autocmd({'BufEnter','BufWinEnter'}, {
     end
   end,
 })
-
-local colors={
-  "#f7768e",
-  "#e0af68",
-  "#9ece6a",
-  "#1abc9c",
-  "#7aa2f7",
-  "#bb9af7",
-  "#9d7cd8"
-}
-
-for i = 1,#colors do
-  vim.cmd("hi rainbowcol"..i.." guifg="..colors[i])
-end
+require("nvim-treesitter").install({
+  "cpp","markdown","markdown_inline","typescript","sql","glsl","latex","lua","bash","typst"
+})
 
 require("colorizer").setup()
 
@@ -32,11 +21,13 @@ vim.g.rainbow_delimiters = {
   query = {
     [''] = 'rainbow-delimiters',
     lua = 'rainbow-blocks',
-    -- latex = 'rainbow-blocks'
+    latex = 'rainbow-blocks'
   },
   priority = {
     [''] = 110,
     lua = 210,
+    latex = 210,
+    cpp = 210
   },
   highlight = {
     'RainbowDelimiterRed',
@@ -47,5 +38,11 @@ vim.g.rainbow_delimiters = {
     'RainbowDelimiterViolet',
     'RainbowDelimiterCyan',
   },
-  log={level=vim.log.levels.DEBUG}
+  log={
+  }
 }
+-- vim.api.nvim_create_autocmd("WinScrolled", {
+--   callback = function()
+--     require("rainbow-delimiters").enable(0)
+--   end,
+-- })

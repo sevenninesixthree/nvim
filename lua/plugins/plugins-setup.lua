@@ -27,14 +27,15 @@ require("lazy").setup({
     }
   },
   {
-  'nvim-treesitter/nvim-treesitter',
-  lazy = false,
-  branch = 'main',
-  build = ':TSUpdate'
+    'nvim-treesitter/nvim-treesitter',
+    lazy = false,
+    branch = 'main',
+    build = ':TSUpdate'
   },
   {
     "hiphish/rainbow-delimiters.nvim",
-    lazy=false
+    lazy=false,
+    submodules=false
   },
   {
     "williamboman/mason.nvim"
@@ -42,6 +43,10 @@ require("lazy").setup({
   {
     "folke/lazydev.nvim",
     ft = "lua",
+    cond = function ()
+      local path=vim.fn.getcwd()
+      return path:find(".config/nvim")
+    end,
     opts = {
       library = {
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
@@ -49,20 +54,27 @@ require("lazy").setup({
     },
   },
   {
-	"L3MON4D3/LuaSnip",
-	version = "v2.*",
-	build = "make install_jsregexp"
+    "L3MON4D3/LuaSnip",
+    version = "v2.*",
+    build = "make install_jsregexp"
   },
   {
     'saghen/blink.cmp',
     version = '1.*',
     opts = {
       sources = {
-        default = { "lsp", "snippets", "path", "buffer" },  -- snippets 优先
+        default = { "lsp", "snippets", "path", "buffer",
+          --"jupynium" 
+        },
         providers = {
           snippets = {
             score_offset = 3,  -- 提高权重
           },
+          -- jupynium = {
+          --   name = "Jupynium",
+          --   module = "jupynium.blink_cmp",
+          --   score_offset = 5
+          -- }
         },
       },
       completion={
@@ -75,7 +87,7 @@ require("lazy").setup({
         menu={
           draw={
             columns=
-            {{'kind_icon'},{'label',gap=1}},
+              {{'kind_icon'},{'label',gap=1}},
             components={
               label={
                 text=function (ctx)
@@ -119,6 +131,7 @@ require("lazy").setup({
     init = function()
       vim.g.vimtex_view_method='zathura'
       vim.g.vimtex_quickfix_mode=0
+      vim.g.vimtex_subfile_start_local=1
     end
   },{
     "iamcco/markdown-preview.nvim",
@@ -139,4 +152,30 @@ require("lazy").setup({
   {"mechatroner/rainbow_csv"},
   {"norcalli/nvim-colorizer.lua"},
   {'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async'},
+  -- {
+  --   "kiyoon/jupynium.nvim",
+  --   build = "pipx install .",
+  -- },
+  {'Vigemus/iron.nvim'},
+  {
+    "folke/snacks.nvim",
+    opts = {
+      image = {
+        enabled=false,
+        doc={inline=false},
+        math={
+          latex={
+            font_size="normalsize"}}}}},
+  {
+    'chomosuke/typst-preview.nvim',
+    ft='typst',
+    version = '1.*',
+    opts = {
+      invert_colors='always',
+      dependencies_bin={
+        ['tinymist']='tinymist',
+        ['websocat']='websocat'
+      }
+    },
+  }
 })

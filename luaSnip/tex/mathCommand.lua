@@ -21,9 +21,11 @@ local command={
     {"ld","\\left\\{<>\\right\\}"},-- 大(da)
     {"la","\\left|<>\\right|"},-- abs, |...|
     {"lc","\\left\\{\n\t<>\n\\right."},
+    {"lm","\\langle<>\\rangle"},
     {"dot","\\dot{<>}"},
     {"ddot","\\ddot{<>}"},
-    {"sqrt","\\sqrt{<>}"}
+    {"sqrt","\\sqrt{<>}"},
+    {"vec","\\vec{<>}"},
   },inMath,
     function () return {d(1,builder)} end},
   {{
