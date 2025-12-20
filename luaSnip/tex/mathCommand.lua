@@ -26,6 +26,7 @@ local command={
     {"ddot","\\ddot{<>}"},
     {"sqrt","\\sqrt{<>}"},
     {"vec","\\vec{<>}"},
+    {"tilde","\\tilde{<>}"},
   },inMath,
     function () return {d(1,builder)} end},
   {{

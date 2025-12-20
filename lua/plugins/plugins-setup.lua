@@ -129,7 +129,7 @@ require("lazy").setup({
     lazy = false,     -- we don't want to lazy load VimTeX
     -- tag = "v2.15", -- uncomment to pin to a specific release
     init = function()
-      vim.g.vimtex_view_method='zathura'
+      vim.g.vimtex_view_method='sioyek'
       vim.g.vimtex_quickfix_mode=0
       vim.g.vimtex_subfile_start_local=1
     end
@@ -177,5 +177,11 @@ require("lazy").setup({
         ['websocat']='websocat'
       }
     },
+  },{
+    "Mythos-404/xmake.nvim",
+    version = "^3",
+    lazy = true,
+    event = "BufReadPost",
+    config = true,
   }
 })

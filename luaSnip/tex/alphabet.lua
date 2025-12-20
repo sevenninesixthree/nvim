@@ -45,7 +45,10 @@ local alphabet={
   {"cdot","cdot"},
   {"to","to"},
   {"in","in"},
-  {"circ","circ"}
+  {"circ","circ"},
+  {"rg","rangle"},
+  {"lg","langle"},
+  {"dagger","dagger"},
 }
 for _, i in ipairs(alphabet) do
   table.insert(M,s({trig=i[1],show_condition=inMath},

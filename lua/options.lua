@@ -70,10 +70,10 @@ au({"BufWinLeave"},{
   pattern={"*.*"},
   command="mkview"
 })
-au({"BufNewFile","BufRead"},{
-  pattern={"*.mcfunction"},
-  command="set filetype=mcfunction"
-})
+-- au({"BufNewFile","BufRead"},{
+--   pattern={"*.mcfunction"},
+--   command="set filetype=mcfunction"
+-- })
 
 local uname=require("checkEnviroment").systemName
 local ph=require("checkEnviroment").phone

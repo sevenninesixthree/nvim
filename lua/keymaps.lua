@@ -24,7 +24,13 @@ km.set("n","syy","\"+yy")
 km.set("v","sy","\"+y")
 
 km.set("n","<leader>e",":NvimTreeToggle<CR>")
-km.set("n","<leader>v",vim.lsp.buf.format);
+km.set("n","<leader>v",function ()
+  if vim.lsp.get_clients({bufnr=0})[1] then
+    vim.lsp.buf.format()
+    return
+  end
+  vim.cmd("gg=G")
+end);
 km.set("n","gca",vim.lsp.buf.code_action)
 km.set("n","<leader>r",":!./%<")
 km.set("n","<C-a>","ggVG")
@@ -33,7 +39,7 @@ local lpList={
     vim.cmd("MarkdownPreviewToggle")
   end,
   pdf=function ()
-    vim.system({'zathura',vim.api.nvim_buf_get_name(0)})
+    vim.system({'sioyek',vim.api.nvim_buf_get_name(0)})
   end,
   typst=function ()
     vim.cmd("silent! TypstPreviewToggle")
