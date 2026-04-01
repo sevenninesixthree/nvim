@@ -22,6 +22,7 @@ end
 km.set("n","sp","\"+p")
 km.set("n","syy","\"+yy")
 km.set("v","sy","\"+y")
+km.set("n","<leader>sv",":loadview<CR>")
 
 km.set("n","<leader>e",":NvimTreeToggle<CR>")
 km.set("n","<leader>v",function ()
@@ -33,7 +34,7 @@ km.set("n","<leader>v",function ()
 end);
 km.set("n","gca",vim.lsp.buf.code_action)
 km.set("n","<leader>r",":!./%<")
-km.set("n","<C-a>","ggVG")
+-- km.set("n","<C-a>","ggVG")
 local lpList={
   markdown=function ()
     vim.cmd("MarkdownPreviewToggle")
