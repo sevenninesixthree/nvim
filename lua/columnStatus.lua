@@ -1,5 +1,5 @@
 local M = {}
-local lineEnable = { "", "terminal" }
+local lineEnable = { "" }
 local tmpf = function(line)
   local ans = {}
   for _, v in pairs(line) do
@@ -15,7 +15,7 @@ lineEnable = setmetatable(tmpf(lineEnable), {
 function M.callback()
   local buf = vim.api.nvim_get_current_buf()
   local type = vim.bo[buf].buftype
-  vim.o.statuscolumn = type=="" and
+  vim.o.statuscolumn = type == "" and
       '%{%v:lua.require("columnStatus").build()%}'
       or ""
 end

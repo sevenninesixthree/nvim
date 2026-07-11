@@ -1,5 +1,5 @@
 vim.api.nvim_create_autocmd({'BufEnter','BufWinEnter'}, {
-  pattern = { '*.lua','*.cpp','*.c','*.h','*.tex','*.glsl','*.sh',"*.py","*.md","*.js","*.ts","*.sql","*.typ"},
+  pattern = { '*.lua','*.cpp','*.c','*.h','*.tex','*.glsl','*.sh',"*.py","*.md","*.js","*.ts","*.sql","*.typ",'*.c3'},
   callback = function()
     vim.treesitter.start()
     if vim.treesitter.query.get(vim.bo.filetype,"indents")~=nil then

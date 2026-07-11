@@ -2,6 +2,7 @@ require("checkEnviroment")
 
 require("plugins.plugins-setup")
 
+require("env")
 require("options")
 require("keymaps")
 require("lspConfig")

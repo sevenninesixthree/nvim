@@ -1,27 +1,28 @@
-local op=vim.opt
-op.number=true
-op.relativenumber=true
+local op = vim.opt
+op.number = true
+op.relativenumber = true
 
-op.autoindent=true
-op.expandtab=true
-op.tabstop=2
-op.shiftwidth=2
-op.linebreak=true
+op.autoindent = true
+op.expandtab = true
+op.tabstop = 2
+op.shiftwidth = 2
+op.linebreak = true
 
-op.splitright=true
-op.splitbelow=true
+op.splitright = true
+op.splitbelow = true
 
-op.foldlevel=99 -- Using ufo provider need a large value, feel free to decrease the value
-op.foldlevelstart=99
-op.foldenable=true
-op.winborder="rounded"
-op.updatetime=1000
+op.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+op.foldlevelstart = 99
+op.foldenable = true
+op.winborder = "rounded"
+op.updatetime = 1000
 
+require('fictx5')
 require('ufo').setup({
-  provider_selector=function(bufnr, filetype, buftype)
-    return {'treesitter', 'indent'}
+  provider_selector = function(_, _, _)
+    return { 'treesitter', 'indent' }
   end,
-  fold_virt_text_handler=function(virtText, lnum, endLnum, width, truncate)
+  fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
     local newVirtText = {}
     local suffix = (' 󰁂 %d '):format(endLnum - lnum)
     local sufWidth = vim.fn.strdisplaywidth(suffix)
@@ -35,7 +36,7 @@ require('ufo').setup({
       else
         chunkText = truncate(chunkText, targetWidth - curWidth)
         local hlGroup = chunk[2]
-        table.insert(newVirtText, {chunkText, hlGroup})
+        table.insert(newVirtText, { chunkText, hlGroup })
         chunkWidth = vim.fn.strdisplaywidth(chunkText)
         -- str width returned from truncate() may less than 2nd argument, need padding
         if curWidth + chunkWidth < targetWidth then
@@ -45,47 +46,47 @@ require('ufo').setup({
       end
       curWidth = curWidth + chunkWidth
     end
-    table.insert(newVirtText, {suffix, 'MoreMsg'})
+    table.insert(newVirtText, { suffix, 'MoreMsg' })
     return newVirtText
   end
 })
 
-op.termguicolors=true
-op.signcolumn="yes"
-op.cursorline=true
+op.termguicolors = true
+op.signcolumn = "yes"
+op.cursorline = true
 
-op.spelllang="en,cjk"
-op.spelloptions="camel"
+op.spelllang = "en,cjk"
+op.spelloptions = "camel"
 
-local au=vim.api.nvim_create_autocmd
-au({"WinEnter","BufEnter"},{
-  callback=require("columnStatus").callback
+local au = vim.api.nvim_create_autocmd
+au({ "WinEnter", "BufEnter", "TermOpen" }, {
+  callback = require("columnStatus").callback
 })
 
--- au({"BufWinEnter"},{
---   pattern={"*.*"},
---   command="silent! loadview"
--- })
-au({"BufWinLeave"},{
-  pattern={"*.*"},
-  command="mkview"
+au({ "BufWinEnter" }, {
+  pattern = { "*.*" },
+  command = "silent! loadview"
+})
+au({ "BufWinLeave" }, {
+  pattern = { "*.*" },
+  command = "mkview"
 })
 -- au({"BufNewFile","BufRead"},{
 --   pattern={"*.mcfunction"},
 --   command="set filetype=mcfunction"
 -- })
 
-local uname=require("checkEnviroment").systemName
-local ph=require("checkEnviroment").phone
-if uname=="Linux" and ph==false then
+local uname = require("checkEnviroment").systemName
+local ph = require("checkEnviroment").phone
+if uname == "Linux" and ph == false then
   require("tokyonight").setup({
     transparent = true, -- Enable this to disable setting the background color
-    styles={
-      sidebars="transparent",
-      floats="transparent",
+    styles = {
+      sidebars = "transparent",
+      floats = "transparent",
     },
-    on_colors=function (colors)
-      colors.bg_statusline=colors.none
+    on_colors = function(colors)
+      colors.bg_statusline = colors.none
     end,
     on_highlights = function(hl, c)
       hl.TabLineFill = {
@@ -95,12 +96,9 @@ if uname=="Linux" and ph==false then
   })
 end
 require("lualine").setup({
-  options={
-    theme='tokyonight'
-  }
+  options = { theme = 'tokyonight' }
 })
-
-vim.cmd[[colorscheme tokyonight-night]]
+vim.cmd [[colorscheme tokyonight-night]]
 vim.cmd("hi LineNrAbove guifg=#586291")
 vim.cmd("hi LineNrBelow guifg=#586291")
 vim.cmd("hi FoldColumn guifg=#7AA2F7")

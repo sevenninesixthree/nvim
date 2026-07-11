@@ -15,17 +15,17 @@ require("lazy").setup({
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
-  },{
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-  },{
-    "nvim-tree/nvim-tree.lua",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    }
-  },
+  }, {
+  "folke/tokyonight.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
+}, {
+  "nvim-tree/nvim-tree.lua",
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  }
+},
   {
     'nvim-treesitter/nvim-treesitter',
     lazy = false,
@@ -34,8 +34,8 @@ require("lazy").setup({
   },
   {
     "hiphish/rainbow-delimiters.nvim",
-    lazy=false,
-    submodules=false
+    lazy = false,
+    submodules = false
   },
   {
     "williamboman/mason.nvim"
@@ -43,8 +43,8 @@ require("lazy").setup({
   {
     "folke/lazydev.nvim",
     ft = "lua",
-    cond = function ()
-      local path=vim.fn.getcwd()
+    cond = function()
+      local path = vim.fn.getcwd()
       return path:find(".config/nvim")
     end,
     opts = {
@@ -63,47 +63,38 @@ require("lazy").setup({
     version = '1.*',
     opts = {
       sources = {
-        default = { "lsp", "snippets", "path", "buffer",
-          --"jupynium" 
-        },
+        default = { "lsp", "snippets", "path", "buffer", },
         providers = {
-          snippets = {
-            score_offset = 3,  -- 提高权重
-          },
-          -- jupynium = {
-          --   name = "Jupynium",
-          --   module = "jupynium.blink_cmp",
-          --   score_offset = 5
-          -- }
+          snippets = { score_offset = 3, },
         },
       },
-      completion={
-        accept={
-          auto_brackets={enabled=false}
+      completion = {
+        accept = {
+          auto_brackets = { enabled = false }
         },
-        documentation={
-          auto_show=true
+        documentation = {
+          auto_show = true
         },
-        menu={
-          draw={
-            columns=
-              {{'kind_icon'},{'label',gap=1}},
-            components={
-              label={
-                text=function (ctx)
+        menu = {
+          draw = {
+            columns =
+            { { 'kind_icon' }, { 'label', gap = 1 } },
+            components = {
+              label = {
+                text = function(ctx)
                   return ctx.label .. ctx.label_detail
                 end,
-                highlight=function (ctx)
-                  local h={
-                    {0,#ctx.label,group=ctx.kind_hl}
+                highlight = function(ctx)
+                  local h = {
+                    { 0, #ctx.label, group = ctx.kind_hl }
                   }
                   if ctx.label_detail then
-                    table.insert(h,{
-                      #ctx.label,#ctx.label+#ctx.label_detail,group='Comment'
+                    table.insert(h, {
+                      #ctx.label, #ctx.label + #ctx.label_detail, group = 'Comment'
                     })
                   end
                   for _, i in ipairs(ctx.label_matched_indices) do
-                    table.insert(h,{i,i+1,group='String'})
+                    table.insert(h, { i, i + 1, group = 'String' })
                   end
                   return h;
                 end
@@ -112,78 +103,96 @@ require("lazy").setup({
           }
         },
       },
-      keymap={
-        ['C-y']={},
-        ['C-u']={},
-        ['<CR>']={ 'accept', 'fallback'},
-        ['<S-Tab>']={'select_prev','snippet_backward','fallback_to_mappings'},
-        ['<Tab>']={'select_next','snippet_forward','fallback_to_mappings'},
+      keymap = {
+        ['C-y'] = {},
+        ['C-u'] = {},
+        ['<CR>'] = { 'accept', 'fallback' },
+        ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback_to_mappings' },
+        ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback_to_mappings' },
       },
-      signature={enabled=true},
+      signature = { enabled = true },
       snippets = { preset = 'luasnip' }
     },
   },
-  {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
+  {
+    'akinsho/bufferline.nvim',
+    version = "*",
+    dependencies = 'nvim-tree/nvim-web-devicons'
+  },
   {
     "lervag/vimtex",
-    lazy = false,     -- we don't want to lazy load VimTeX
+    lazy = false, -- we don't want to lazy load VimTeX
     -- tag = "v2.15", -- uncomment to pin to a specific release
     init = function()
-      vim.g.vimtex_view_method='sioyek'
-      vim.g.vimtex_quickfix_mode=0
-      vim.g.vimtex_subfile_start_local=1
+      vim.g.vimtex_view_method = 'sioyek'
+      vim.g.vimtex_quickfix_mode = 0
+      vim.g.vimtex_subfile_start_local = 1
     end
-  },{
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    build = "cd app && yarn install",
-    init = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-      vim.g.mkdp_theme = 'dark'
-    end,
-    ft = { "markdown" },
+  }, {
+  "iamcco/markdown-preview.nvim",
+  cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+  build = "cd app && yarn install",
+  init = function()
+    vim.g.mkdp_filetypes = { "markdown" }
+    vim.g.mkdp_theme = 'dark'
+  end,
+  ft = { "markdown" },
+},
+  { 'm4xshen/autoclose.nvim' },
+  { "lewis6991/gitsigns.nvim" },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {}
   },
-  {'m4xshen/autoclose.nvim'},
-  {"lewis6991/gitsigns.nvim"},
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-  {"mfussenegger/nvim-dap"},
-  { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} },
-  {"theHamsta/nvim-dap-virtual-text"},
-  {"mechatroner/rainbow_csv"},
-  {"norcalli/nvim-colorizer.lua"},
-  {'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async'},
+  { "mfussenegger/nvim-dap" },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" }
+  },
+  { "theHamsta/nvim-dap-virtual-text" },
+  { "mechatroner/rainbow_csv" },
+  { "catgoose/nvim-colorizer.lua" },
+  {
+    'kevinhwang91/nvim-ufo',
+    dependencies = 'kevinhwang91/promise-async'
+  },
   -- {
   --   "kiyoon/jupynium.nvim",
   --   build = "pipx install .",
   -- },
-  {'Vigemus/iron.nvim'},
+  { 'Vigemus/iron.nvim' },
   {
     "folke/snacks.nvim",
     opts = {
       image = {
-        enabled=false,
-        doc={inline=false},
-        math={
-          latex={
-            font_size="normalsize"}}}}},
+        enabled = false,
+        doc = { inline = false },
+        math = {
+          latex = {
+            font_size = "normalsize" }
+        }
+      }
+    }
+  },
   {
     'chomosuke/typst-preview.nvim',
-    ft='typst',
+    ft = 'typst',
     version = '1.*',
     opts = {
-      invert_colors='always',
-      dependencies_bin={
-        ['tinymist']='tinymist',
-        ['websocat']='websocat'
+      invert_colors = 'always',
+      dependencies_bin = {
+        ['tinymist'] = 'tinymist',
+        ['websocat'] = 'websocat'
       }
     },
-  },{
-    "Mythos-404/xmake.nvim",
-    version = "^3",
-    lazy = true,
-    event = "BufReadPost",
-    config = true,
-  },{
+  }, {
+  "Mythos-404/xmake.nvim",
+  version = "^3",
+  lazy = true,
+  event = "BufReadPost",
+  config = true,
+}, {
   'Julian/lean.nvim',
   event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
 
@@ -205,5 +214,6 @@ require("lazy").setup({
   opts = { -- see below for full configuration options
     mappings = true,
   }
-}
+},
+  -- { "rimeinn/rime.nvim", lazy = false }
 })
